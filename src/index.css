@@ -1,0 +1,89 @@
+/* Import Tailwind CSS */
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
+
+/* Define Custom Theme using the @theme directive */
+@theme {
+  /* --- 1. Custom Colors (Use --color-* namespace) --- */
+  
+  /* Primary: Playful Orange */
+  --color-primary-50: #FFF4E6;
+  --color-primary-100: #FFE8CC;
+  --color-primary-400: #FFB84D;
+  --color-primary: #FF9500; /* Default Primary Color - Orange */
+  --color-primary-600: #CC7700;
+  --color-primary-800: #995900;
+
+  /* Secondary: Light Blue Background */
+  --color-secondary-50: #E8F4F8;
+  --color-secondary-100: #D1E9F1;
+  --color-secondary-400: #7EC8E0;
+  --color-secondary: #4DB8D9; /* Light Blue */
+  --color-secondary-600: #3D93AD;
+  --color-secondary-800: #2E6E82;
+  
+  /* Accent: Red for buttons */
+  --color-accent: #FF4444;
+  --color-accent-600: #CC3636;
+  
+  /* Utility & Background Colors */
+  --color-background-light: #E8F4F8; /* Light Blue Background */
+  --color-surface: #FFFFFF;         /* Pure White for cards */
+  --color-text-dark: #2C3E50;       /* Dark Blue-Gray for text */
+  --color-text-light: #7F8C8D;      /* Light Gray for secondary text */
+  --color-success: #4BB543;         /* Green for success */
+  --color-outline-soft: #D3D3D3;    /* Soft Grey for borders */
+
+
+  /* --- 2. Custom Border Radius (Use --border-radius-* namespace) --- */
+  
+  /* Larger rounding for a 'cute' and friendly look */
+  --border-radius-lg: 1rem;
+  --border-radius-xl: 1.5rem;
+  --border-radius-2xl: 2rem;
+  --border-radius-3xl: 3rem;
+
+
+  /* --- 3. Custom Font (Use --font-* namespace) --- */
+  
+  /* Playful fonts for the cooking theme */
+  --font-display: 'Fredoka', ui-sans-serif, system-ui;
+  --font-sans: 'Nunito', ui-sans-serif, system-ui;
+  
+  /* --- 4. Custom Shadows (Uses default color, but you can define custom ones) --- */
+  
+  /* Example of defining a custom shadow token */
+  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  --shadow-elevate: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow-playful: 0 8px 16px -4px rgba(255, 149, 0, 0.2);
+}
+
+/* Base Styles using @layer */
+@layer base {
+  /* Set background and default text color for the app body */
+  body {
+    @apply bg-background-light text-text-dark font-sans antialiased;
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(255, 149, 0, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(77, 184, 217, 0.05) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234DB8D9' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
