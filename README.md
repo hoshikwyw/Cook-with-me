@@ -1,73 +1,97 @@
-# React + TypeScript + Vite
+# Yumli
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Your cozy kitchen companion. A cute, pixel-art themed recipe app built for people who love cooking for themselves.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Recipe collection with search, category filtering, and favorites
+- Recipe detail pages with image gallery, ingredients, step-by-step instructions, and YouTube video tutorials
+- Admin dashboard to add, edit, and delete recipes and categories
+- Image upload to Supabase Storage (up to 3 per recipe)
+- Dark mode toggle
+- i18n support (English + Myanmar)
+- Mobile-first responsive design
+- Cute pixel-art UI with pastel colors
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React 19, TypeScript, Vite
+- **Styling:** Tailwind CSS v4, custom pixel-art theme
+- **Backend:** Supabase (PostgreSQL, Storage, Row Level Security)
+- **Routing:** React Router v7
+- **i18n:** react-i18next
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 18+
+- A [Supabase](https://supabase.com) project
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Setup
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repo and install dependencies:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Create a `.env` file in the root:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+3. Run the SQL files in your Supabase SQL Editor (in order):
+
+```
+supabase/schema.sql
+supabase/migration_images.sql
+supabase/seed.sql          # optional - sample recipes
+```
+
+4. Start the dev server:
+
+```bash
+npm run dev
+```
+
+### Deployment
+
+Deployed on Vercel. Make sure to add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` as environment variables in Vercel project settings.
+
+## Project Structure
+
+```
+src/
+  components/
+    common/       # Button, Card, Badge, Input, Select, etc.
+    Navbar.tsx
+    HeroSection.tsx
+    RecipeCard.tsx
+    ErrorBoundary.tsx
+    PageTransition.tsx
+  context/        # Theme, Favorites, Auth providers
+  hooks/          # useRecipes, useCategories, etc.
+  lib/            # Supabase client
+  locales/        # en + mm translations
+  pages/
+    Home.tsx
+    Recipes.tsx
+    RecipeDetail.tsx
+    About.tsx
+    NotFound.tsx
+    admin/        # Login, Dashboard, RecipeForm
+  services/       # recipeService (Supabase queries)
+  themes/         # Color palette, font system
+  types/          # Recipe, Category, User, Review
+supabase/
+  schema.sql      # Tables, views, RLS policies
+  migration_images.sql  # Storage bucket + image columns
+  seed.sql        # Sample recipe data
+```
+
+## Admin Access
+
+Navigate to `/admin` (hidden `+` button in footer). Login required.

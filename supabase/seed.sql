@@ -1,5 +1,5 @@
 -- =============================================
--- CookWithMe Seed Data
+-- Yumli Seed Data
 -- Run this AFTER schema.sql in Supabase SQL Editor
 -- =============================================
 

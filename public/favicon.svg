@@ -47,9 +47,9 @@
   <!-- Small star sparkle right -->
   <path d="M330 170 L332 163 L334 170 L341 172 L334 174 L332 181 L330 174 L323 172Z" fill="#FFD98E" opacity="0.4"/>
 
-  <!-- Text: Cook With Me -->
+  <!-- Text: Yumli -->
   <text x="256" y="345" text-anchor="middle" font-family="'Nunito', Arial, sans-serif" font-weight="800" font-size="38" fill="#FF7B7B" letter-spacing="1">
-    Cook With Me
+    Yumli
   </text>
 
   <!-- Small subtitle dots -->

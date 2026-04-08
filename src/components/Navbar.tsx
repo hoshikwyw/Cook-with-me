@@ -39,7 +39,7 @@ export default function Navbar() {
             <span style={{ ...fonts.logo, color: colors.primary, fontSize: undefined }}
               className="text-[12px] sm:text-[16px]"
             >
-              Cook With Me
+              Yumli
             </span>
           </Link>
 

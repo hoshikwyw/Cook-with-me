@@ -12,7 +12,7 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-const STORAGE_KEY = 'cookwithme_theme';
+const STORAGE_KEY = 'yumli_theme';
 
 function loadTheme(): ThemeMode {
   try {

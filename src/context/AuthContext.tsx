@@ -8,7 +8,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-const STORAGE_KEY = 'cookwithme_auth';
+const STORAGE_KEY = 'yumli_auth';
 const VALID_USER = 'kayv';
 const VALID_PASS = 'Psw1712';
 

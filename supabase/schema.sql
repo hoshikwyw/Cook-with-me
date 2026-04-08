@@ -1,5 +1,5 @@
 -- =============================================
--- CookWithMe Database Schema
+-- Yumli Database Schema
 -- Run this in Supabase SQL Editor
 -- =============================================
 

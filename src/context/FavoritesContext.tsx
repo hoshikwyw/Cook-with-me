@@ -8,7 +8,7 @@ interface FavoritesContextType {
 
 const FavoritesContext = createContext<FavoritesContextType | null>(null);
 
-const STORAGE_KEY = 'cookwithme_favorites';
+const STORAGE_KEY = 'yumli_favorites';
 
 function loadFavorites(): string[] {
   try {

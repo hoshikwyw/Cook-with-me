@@ -18,7 +18,7 @@ export default function Footer() {
             <span style={{ ...fonts.logo, color: colors.primary, fontSize: undefined }}
               className="text-[12px] sm:text-[16px]"
             >
-              Cook With Me
+              Yumli
             </span>
             <p
               style={{ ...fonts.body, color: colors.gray400, lineHeight: '1.8', whiteSpace: 'pre-line' }}
