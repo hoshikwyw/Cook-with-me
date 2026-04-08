@@ -38,6 +38,15 @@ alter table recipes enable row level security;
 create policy "Public can read categories" on categories
   for select using (true);
 
+create policy "Allow insert categories" on categories
+  for insert with check (true);
+
+create policy "Allow update categories" on categories
+  for update using (true);
+
+create policy "Allow delete categories" on categories
+  for delete using (true);
+
 create policy "Public can read recipes" on recipes
   for select using (true);
 

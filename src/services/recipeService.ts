@@ -102,6 +102,25 @@ export async function deleteRecipe(id: string): Promise<void> {
   if (error) throw error;
 }
 
+// ── Category write operations ──
+
+export async function createCategory(name: string): Promise<void> {
+  const slug = name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  const { error } = await supabase.from('categories').insert({ name, slug });
+  if (error) throw error;
+}
+
+export async function updateCategory(id: string, name: string): Promise<void> {
+  const slug = name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  const { error } = await supabase.from('categories').update({ name, slug }).eq('id', id);
+  if (error) throw error;
+}
+
+export async function deleteCategory(id: string): Promise<void> {
+  const { error } = await supabase.from('categories').delete().eq('id', id);
+  if (error) throw error;
+}
+
 // Fetch a raw recipe (from recipes table, not the view) for editing
 export async function getRawRecipeById(id: string) {
   const { data, error } = await supabase
