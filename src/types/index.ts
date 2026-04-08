@@ -3,6 +3,7 @@ export interface Recipe {
   title: string;
   description: string;
   image: string;
+  images: string[];
   prep_time: string;
   cook_time: string;
   servings: number;
@@ -10,8 +11,10 @@ export interface Recipe {
   ingredients: string[];
   instructions: string[];
   category: string;
+  category_id: string;
   category_slug: string;
   is_featured: boolean;
+  youtube_link: string | null;
   created_at: string;
   updated_at: string;
 }

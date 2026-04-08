@@ -33,7 +33,7 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
         {/* Image */}
         <div className="relative overflow-hidden h-28 sm:h-40 md:h-48">
           <img
-            src={recipe.image}
+            src={recipe.images?.[0] ?? recipe.image}
             alt={recipe.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />

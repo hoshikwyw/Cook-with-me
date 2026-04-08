@@ -77,6 +77,7 @@ export interface RecipeInput {
   title: string;
   description: string;
   image: string;
+  images: string[];
   prep_time: string;
   cook_time: string;
   servings: number;
@@ -85,6 +86,34 @@ export interface RecipeInput {
   instructions: string[];
   category_id: string;
   is_featured: boolean;
+  youtube_link: string | null;
+}
+
+// ── Image upload ──
+
+const BUCKET = 'recipe-images';
+
+export async function uploadImage(file: File): Promise<string> {
+  const ext = file.name.split('.').pop() ?? 'jpg';
+  const fileName = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+  const path = `uploads/${fileName}`;
+
+  const { error } = await supabase.storage.from(BUCKET).upload(path, file, {
+    cacheControl: '3600',
+    upsert: false,
+  });
+  if (error) throw error;
+
+  const { data } = supabase.storage.from(BUCKET).getPublicUrl(path);
+  return data.publicUrl;
+}
+
+export async function deleteImage(url: string): Promise<void> {
+  // Extract path from the full public URL
+  const match = url.match(/recipe-images\/(.+)$/);
+  if (!match) return;
+  const { error } = await supabase.storage.from(BUCKET).remove([match[1]]);
+  if (error) throw error;
 }
 
 export async function createRecipe(input: RecipeInput): Promise<void> {

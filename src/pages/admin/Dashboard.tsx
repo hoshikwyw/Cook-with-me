@@ -19,6 +19,7 @@ export default function Dashboard() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState<string | null>(null);
+  const [error, setError] = useState('');
 
   // Category form state
   const [newCatName, setNewCatName] = useState('');
@@ -45,10 +46,13 @@ export default function Dashboard() {
   const handleDeleteRecipe = async (id: string, title: string) => {
     if (!confirm(`Delete "${title}"? This cannot be undone.`)) return;
     setDeleting(id);
+    setError('');
     try {
       await recipeService.deleteRecipe(id);
       setRecipes((prev) => prev.filter((r) => r.id !== id));
-    } catch { /* ignore */ }
+    } catch (err: any) {
+      setError(`Failed to delete: ${err.message}`);
+    }
     setDeleting(null);
   };
 
@@ -159,6 +163,24 @@ export default function Dashboard() {
             </div>
           </Card>
         </div>
+
+        {/* Error banner */}
+        {error && (
+          <div
+            style={{
+              backgroundColor: colors.primaryPastel,
+              border: `2px solid ${colors.error}`,
+              color: colors.error,
+              fontFamily: "'Nunito', sans-serif",
+              padding: '10px 14px',
+              marginBottom: '16px',
+            }}
+            className="text-sm flex items-center justify-between"
+          >
+            <span>{error}</span>
+            <button onClick={() => setError('')} style={{ border: 'none', background: 'none', color: colors.error, cursor: 'pointer', fontWeight: 700 }}>x</button>
+          </div>
+        )}
 
         {/* Tabs */}
         <div className="flex gap-2 mb-6">

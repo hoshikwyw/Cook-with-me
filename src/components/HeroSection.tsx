@@ -115,7 +115,7 @@ export default function HeroSection({ featuredRecipe }: HeroSectionProps) {
           <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
             <Card variant="default">
               <img
-                src={featuredRecipe.image}
+                src={featuredRecipe.images?.[0] ?? featuredRecipe.image}
                 alt={featuredRecipe.title}
                 className="w-full h-48 sm:h-56 md:h-72 object-cover"
               />

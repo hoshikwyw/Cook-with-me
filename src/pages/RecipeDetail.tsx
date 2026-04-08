@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useRecipeById, useRecipes } from '../hooks/useRecipes';
 import { useTheme } from '../context/ThemeContext';
@@ -74,9 +75,23 @@ export default function RecipeDetail() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
             {/* Left */}
             <div className="space-y-4 sm:space-y-6">
-              <Card variant="default">
-                <img src={recipe.image} alt={recipe.title} className="w-full h-48 sm:h-64 md:h-80 object-cover" />
-              </Card>
+              {/* Image Gallery */}
+              <ImageGallery images={recipe.images?.length ? recipe.images : [recipe.image]} colors={colors} />
+
+              {/* YouTube Video */}
+              {recipe.youtube_link && getYouTubeId(recipe.youtube_link) && (
+                <Card variant="default" className="overflow-hidden">
+                  <div className="relative" style={{ paddingBottom: '56.25%' }}>
+                    <iframe
+                      src={`https://www.youtube.com/embed/${getYouTubeId(recipe.youtube_link)}`}
+                      className="absolute top-0 left-0 w-full h-full"
+                      allowFullScreen
+                      title="Recipe video"
+                      style={{ border: 'none' }}
+                    />
+                  </div>
+                </Card>
+              )}
 
               <div className="grid grid-cols-3 gap-2 sm:gap-4">
                 {[
@@ -195,4 +210,63 @@ export default function RecipeDetail() {
       </section>
     </div>
   );
+}
+
+// ── Image Gallery sub-component ──
+function ImageGallery({ images, colors }: { images: string[]; colors: Record<string, string> }) {
+  const [active, setActive] = useState(0);
+
+  if (images.length === 0) return null;
+
+  return (
+    <div className="space-y-2 sm:space-y-3">
+      {/* Main image */}
+      <Card variant="default">
+        <img
+          src={images[active]}
+          alt={`Recipe photo ${active + 1}`}
+          className="w-full h-48 sm:h-64 md:h-80 object-cover"
+        />
+      </Card>
+
+      {/* Thumbnails — only if more than 1 image */}
+      {images.length > 1 && (
+        <div className="flex gap-2">
+          {images.map((url, i) => (
+            <button
+              key={url}
+              type="button"
+              onClick={() => setActive(i)}
+              style={{
+                border: i === active ? `3px solid ${colors.primary}` : `2px solid ${colors.gray200}`,
+                borderRadius: '8px',
+                overflow: 'hidden',
+                cursor: 'pointer',
+                opacity: i === active ? 1 : 0.6,
+                transition: 'all 0.15s ease',
+                padding: 0,
+                background: 'none',
+              }}
+              className="w-16 h-16 sm:w-20 sm:h-20 shrink-0"
+            >
+              <img src={url} alt={`Thumb ${i + 1}`} className="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Extract YouTube video ID
+function getYouTubeId(url: string): string | null {
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+    /^([a-zA-Z0-9_-]{11})$/,
+  ];
+  for (const p of patterns) {
+    const match = url.match(p);
+    if (match) return match[1];
+  }
+  return null;
 }
