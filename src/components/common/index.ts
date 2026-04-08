@@ -6,3 +6,4 @@ export { default as PageHeader } from './PageHeader';
 export { default as Container } from './Container';
 export { default as Footer } from './Footer';
 export { default as Skeleton, RecipeCardSkeleton } from './Skeleton';
+export { default as Select } from './Select';

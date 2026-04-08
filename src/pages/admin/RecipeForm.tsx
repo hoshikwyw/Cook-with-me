@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { useCategories } from '../../hooks/useRecipes';
 import { fonts } from '../../themes/font';
-import { Container, Card, Button, Input, Textarea } from '../../components/common';
+import { Container, Card, Button, Input, Textarea, Select } from '../../components/common';
 import * as recipeService from '../../services/recipeService';
 import type { RecipeInput } from '../../services/recipeService';
 
@@ -172,37 +172,25 @@ export default function RecipeForm() {
               <Input label="PREP TIME" value={form.prep_time} onChange={(e) => updateField('prep_time', e.target.value)} placeholder="10 min" />
               <Input label="COOK TIME" value={form.cook_time} onChange={(e) => updateField('cook_time', e.target.value)} placeholder="20 min" />
               <Input label="SERVINGS" type="number" value={String(form.servings)} onChange={(e) => updateField('servings', parseInt(e.target.value) || 1)} />
-              <div>
-                <label style={{ ...fonts.h4, color: colors.textPrimary, display: 'block', marginBottom: '8px', fontSize: undefined }} className="text-[9px] sm:text-[11px]">
-                  DIFFICULTY
-                </label>
-                <select
-                  value={form.difficulty}
-                  onChange={(e) => updateField('difficulty', e.target.value as RecipeInput['difficulty'])}
-                  style={inputStyle}
-                >
-                  <option value="Easy">Easy</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Hard">Hard</option>
-                </select>
-              </div>
+              <Select
+                label="DIFFICULTY"
+                value={form.difficulty}
+                onChange={(val) => updateField('difficulty', val as RecipeInput['difficulty'])}
+                options={[
+                  { value: 'Easy', label: 'Easy' },
+                  { value: 'Medium', label: 'Medium' },
+                  { value: 'Hard', label: 'Hard' },
+                ]}
+              />
             </div>
 
-            <div>
-              <label style={{ ...fonts.h4, color: colors.textPrimary, display: 'block', marginBottom: '8px', fontSize: undefined }} className="text-[9px] sm:text-[11px]">
-                CATEGORY
-              </label>
-              <select
-                value={form.category_id}
-                onChange={(e) => updateField('category_id', e.target.value)}
-                style={inputStyle}
-              >
-                <option value="">Select category...</option>
-                {categories.map((c) => (
-                  <option key={c.id} value={c.id}>{c.name}</option>
-                ))}
-              </select>
-            </div>
+            <Select
+              label="CATEGORY"
+              value={form.category_id}
+              onChange={(val) => updateField('category_id', val)}
+              placeholder="Select category..."
+              options={categories.map((c) => ({ value: c.id, label: c.name }))}
+            />
 
             <label className="flex items-center gap-3 cursor-pointer">
               <input
