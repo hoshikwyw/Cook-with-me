@@ -1,4 +1,6 @@
-export const colors = {
+export type ColorScheme = Record<string, string>;
+
+export const colors: ColorScheme = {
     // ── Primary: Warm Coral/Peach ──
     primary: "#FF7B7B",
     primaryDark: "#E85D5D",
@@ -89,6 +91,50 @@ export const colors = {
     warning: "#FFD98E",
     error: "#FF7B7B",
     info: "#8ECAE6",
-} as const;
+};
 
-export type Colors = typeof colors;
+export const darkColors: ColorScheme = {
+    ...colors,
+    // ── Override for dark mode ──
+    black: "#E8E5E0",
+    white: "#1A1A2E",
+    cream: "#16213E",
+    gray50: "#1A1A2E",
+    gray100: "#1E1E36",
+    gray200: "#2A2A42",
+    gray300: "#3D3955",
+    gray400: "#6B6580",
+    gray500: "#9890A8",
+    gray600: "#B8B0C8",
+    gray700: "#D4CDE0",
+
+    textPrimary: "#E8E5E0",
+    textSecondary: "#B8B0C8",
+    textMuted: "#6B6580",
+    textLight: "#1A1A2E",
+
+    bgPrimary: "#1A1A2E",
+    bgCard: "#1E1E36",
+    bgGradientStart: "#1A1A2E",
+    bgGradientEnd: "#16213E",
+    bgLight: "#1E1E36",
+    bgCream: "#1A1A2E",
+    bgOverlay: "rgba(0, 0, 0, 0.6)",
+
+    pixelShadow: "#0D0D1A",
+    pixelBorder: "#E8E5E0",
+    pixelBorderLight: "#3D3955",
+
+    cardBg: "#1E1E36",
+    cardBgAlt: "#16213E",
+    surfaceLight: "#1E1E36",
+
+    pastelPink: "#3D1F2E",
+    pastelLavender: "#2A2440",
+    pastelMint: "#1A3330",
+    pastelYellow: "#3D3320",
+    pastelBlue: "#1A2D3D",
+    pastelPeach: "#3D2A1A",
+};
+
+export type Colors = ColorScheme;

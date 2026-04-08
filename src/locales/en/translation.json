@@ -1,3 +1,88 @@
 {
-    "greeting": "Hello There"
+  "nav": {
+    "home": "HOME",
+    "recipes": "RECIPES",
+    "about": "ABOUT",
+    "contact": "CONTACT",
+    "menu": "MENU",
+    "close": "CLOSE"
+  },
+  "hero": {
+    "tagline": "COOK AT HOME",
+    "title1": "Good Food",
+    "title2": "Good Mood",
+    "subtitle": "Discover pixel-perfect recipes that bring joy to your kitchen. Simple, cute, and delicious.",
+    "cta": "GET STARTED"
+  },
+  "home": {
+    "featuredRecipes": "Featured Recipes",
+    "quickInfo": "Quick Info",
+    "instructions": "Instructions",
+    "prep": "prep",
+    "servings": "servings"
+  },
+  "recipes": {
+    "title": "Our Recipes",
+    "subtitle": "Discover delicious recipes for every occasion",
+    "search": "Search recipes...",
+    "noResults": "NO RECIPES FOUND",
+    "noResultsHint": "Try a different search or category.",
+    "all": "ALL",
+    "view": "VIEW",
+    "letsCook": "LET'S COOK",
+    "prep": "PREP",
+    "cook": "COOK"
+  },
+  "recipeDetail": {
+    "notFound": "RECIPE NOT FOUND",
+    "notFoundHint": "Oops! This recipe doesn't exist.",
+    "backToRecipes": "BACK TO RECIPES",
+    "ingredients": "Ingredients",
+    "instructions": "Instructions",
+    "prep": "PREP",
+    "cook": "COOK",
+    "serves": "SERVES",
+    "moreIn": "More {{category}}"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Your culinary journey starts here",
+    "storyTitle": "Our Story",
+    "story1": "Welcome to Cook With Me, where we believe that good food brings good mood! Our mission is to inspire home cooks of all levels to create delicious meals that bring joy to their tables.",
+    "story2": "From traditional family recipes to modern culinary creations, we're here to guide you through every step of your cooking journey.",
+    "story3": "Join our community of food lovers and discover the magic of cooking at home. Let's create good food and good mood together!",
+    "feature1Title": "Expert Recipes",
+    "feature1Desc": "Curated by professional chefs",
+    "feature2Title": "Easy to Follow",
+    "feature2Desc": "Step-by-step instructions",
+    "feature3Title": "Community Love",
+    "feature3Desc": "Join thousands of food lovers"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "We'd love to hear from you!",
+    "infoTitle": "Contact Info",
+    "email": "EMAIL",
+    "phone": "PHONE",
+    "location": "LOCATION",
+    "followUs": "FOLLOW US",
+    "nameLabel": "YOUR NAME",
+    "namePlaceholder": "John Doe",
+    "emailLabel": "EMAIL ADDRESS",
+    "emailPlaceholder": "john@example.com",
+    "messageLabel": "MESSAGE",
+    "messagePlaceholder": "Tell us what's on your mind...",
+    "send": "SEND MESSAGE"
+  },
+  "footer": {
+    "tagline": "Good Food, Good Mood.\nYour pixel-perfect cooking companion.",
+    "navigate": "NAVIGATE",
+    "followUs": "FOLLOW US",
+    "rights": "Cook With Me. All rights reserved.",
+    "madeWith": "MADE WITH <3 AND PIXELS"
+  },
+  "common": {
+    "browseRecipes": "BROWSE RECIPES",
+    "unlockChef": "Unlock Your Inner Chef!"
+  }
 }

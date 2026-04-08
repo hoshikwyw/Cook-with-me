@@ -213,3 +213,38 @@
 .animate-slide-down {
   animation: slide-down 0.3s ease-out forwards;
 }
+
+/* Page transition */
+.page-enter {
+  animation: slide-up 0.35s ease-out forwards;
+}
+
+/* Skeleton pulse */
+@keyframes pulse-pixel {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ═══════════════════════════════════════════
+   DARK MODE
+   ═══════════════════════════════════════════ */
+[data-theme="dark"] body {
+  background-color: #1A1A2E;
+  color: #E8E5E0;
+}
+
+[data-theme="dark"] ::selection {
+  background-color: #FF7B7B;
+  color: #1A1A2E;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #1A1A2E;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #3D3955;
+  border-color: #1A1A2E;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #5A5478;
+}
