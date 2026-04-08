@@ -3,142 +3,120 @@ import RecipeCard from '../components/RecipeCard';
 import { featuredRecipes } from '../data/recipes';
 import { colors } from '../themes/color';
 import { fonts } from '../themes/font';
+import { Card, Container } from '../components/common';
 
 export default function Home() {
   const mainRecipe = featuredRecipes[0];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: colors.cream }}>
+    <div style={{ backgroundColor: colors.bgPrimary }}>
       {/* Hero Section */}
       <HeroSection featuredRecipe={mainRecipe} />
 
       {/* Featured Recipes Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Left: Recipe Grid */}
-          <div>
-            <h2 
-              style={{
-                ...fonts.h2,
-                color: colors.textAccent,
-                fontSize: '36px'
-              }}
-              className="mb-8"
-            >
-              Featured Recipes
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {featuredRecipes.map((recipe) => (
-                <RecipeCard key={recipe.id} recipe={recipe} />
-              ))}
-            </div>
-          </div>
-
-          {/* Right: Instructions */}
-          <div className="space-y-6">
-            <div 
-              style={{ 
-                backgroundColor: colors.white,
-                boxShadow: '0 4px 20px rgba(184, 230, 240, 0.2)'
-              }}
-              className="rounded-3xl p-8"
-            >
-              <h2 
+      <section style={{ backgroundColor: colors.bgPrimary }} className="py-16 pixel-cross">
+        <Container>
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Left: Recipe Grid */}
+            <div>
+              <h2
                 style={{
-                  ...fonts.h3,
-                  color: colors.textSecondary,
-                  fontSize: '24px'
+                  ...fonts.h2,
+                  color: colors.textPrimary,
                 }}
-                className="mb-6"
+                className="mb-8"
               >
-                Quick Info
+                Featured Recipes
               </h2>
-              <div className="space-y-4 mb-4">
-                <div 
-                  className="flex items-center"
-                  style={{
-                    ...fonts.body,
-                    color: colors.textSecondary
-                  }}
-                >
-                  <span className="mr-3 text-2xl">🥚</span>
-                  <span>1 cup flour</span>
-                </div>
-                <div 
-                  className="flex items-center"
-                  style={{
-                    ...fonts.body,
-                    color: colors.textSecondary
-                  }}
-                >
-                  <span className="mr-3 text-2xl">🥛</span>
-                  <span>1/2 cup milk</span>
-                </div>
-                <div 
-                  className="flex items-center"
-                  style={{
-                    ...fonts.body,
-                    color: colors.textSecondary
-                  }}
-                >
-                  <span className="mr-3 text-2xl">⏱️</span>
-                  <span>{mainRecipe.prepTime} prep</span>
-                </div>
-                <div 
-                  className="flex items-center"
-                  style={{
-                    ...fonts.body,
-                    color: colors.textSecondary
-                  }}
-                >
-                  <span className="mr-3 text-2xl">👥</span>
-                  <span>{mainRecipe.servings} servings</span>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {featuredRecipes.map((recipe) => (
+                  <RecipeCard key={recipe.id} recipe={recipe} />
+                ))}
               </div>
             </div>
 
-            <div 
-              style={{ backgroundColor: colors.grayLight }}
-              className="rounded-2xl p-8 shadow-lg"
-            >
-              <h2 
-                style={{
-                  ...fonts.h3,
-                  color: colors.textSecondary,
-                  fontSize: '24px'
-                }}
-                className="mb-6"
-              >
-                Instructions
-              </h2>
-              <ol 
-                className="space-y-4"
-                style={{
-                  ...fonts.body,
-                  color: colors.textSecondary
-                }}
-              >
-                {mainRecipe.instructions.map((instruction, index) => (
-                  <li key={index} className="flex items-start">
-                    <span 
+            {/* Right: Info Panels */}
+            <div className="space-y-6">
+              <Card variant="pastel-lavender" className="p-8">
+                <h2
+                  style={{
+                    ...fonts.h3,
+                    color: colors.textPrimary,
+                  }}
+                  className="mb-6"
+                >
+                  Quick Info
+                </h2>
+                <div className="space-y-4">
+                  {[
+                    { icon: '*', text: '1 cup flour' },
+                    { icon: '*', text: '1/2 cup milk' },
+                    { icon: '>', text: `${mainRecipe.prepTime} prep` },
+                    { icon: '#', text: `${mainRecipe.servings} servings` },
+                  ].map((item, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center"
                       style={{
-                        fontWeight: '700',
-                        color: colors.textAccent,
-                        minWidth: '32px'
+                        ...fonts.body,
+                        color: colors.textSecondary,
                       }}
-                      className="mr-3"
                     >
-                      {index + 1}.
-                    </span>
-                    <span>{instruction}</span>
-                  </li>
-                ))}
-              </ol>
+                      <span
+                        style={{
+                          ...fonts.tag,
+                          color: colors.secondary,
+                          width: '24px',
+                        }}
+                        className="mr-3"
+                      >
+                        {item.icon}
+                      </span>
+                      <span>{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card variant="pastel-mint" className="p-8">
+                <h2
+                  style={{
+                    ...fonts.h3,
+                    color: colors.textPrimary,
+                  }}
+                  className="mb-6"
+                >
+                  Instructions
+                </h2>
+                <ol
+                  className="space-y-4"
+                  style={{
+                    ...fonts.body,
+                    color: colors.textSecondary,
+                  }}
+                >
+                  {mainRecipe.instructions.map((instruction, index) => (
+                    <li key={index} className="flex items-start">
+                      <span
+                        style={{
+                          ...fonts.tag,
+                          color: colors.accent,
+                          minWidth: '28px',
+                          paddingTop: '4px',
+                        }}
+                        className="mr-3"
+                      >
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span>{instruction}</span>
+                    </li>
+                  ))}
+                </ol>
+              </Card>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
     </div>
   );
 }
-

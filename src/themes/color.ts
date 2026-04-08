@@ -1,67 +1,94 @@
 export const colors = {
-    // Primary Brand Colors - Warm Orange/Coral
-    primary: "#FF9B70",        // Main coral/orange from brand
-    primaryDark: "#FF7A47",    // Darker coral for hover states
-    primaryLight: "#FFB899",   // Lighter peachy tone
-    
-    // Secondary Brand Colors - Soft Blue
-    secondary: "#B8E6F0",      // Soft cyan/blue from background
-    secondaryDark: "#8DD4E6",  // Darker blue
-    secondaryLight: "#D4F1F9", // Very light blue
-    
-    // Neutral Colors
-    black: "#2D3436",          // Soft black (not pure black)
-    white: "#FFFFFF",          // Pure white
-    gray: "#95A5A6",           // Soft gray
-    grayLight: "#F8F9FA",      // Very light gray background
-    grayDark: "#636E72",       // Dark gray text
-    cream: "#FFF8F0",          // Cream/off-white
-    
-    // Text Colors
-    textPrimary: "#2D3436",    // Dark text for light backgrounds
-    textSecondary: "#636E72",  // Medium gray text
-    textMuted: "#95A5A6",      // Muted gray text
-    textAccent: "#FF9B70",     // Orange accent text
-    textLight: "#FFFFFF",      // White text for dark backgrounds
-    
-    // Background Colors
-    bgPrimary: "#B8E6F0",      // Soft blue background (brand color)
-    bgGradientStart: "#D4F1F9", // Light blue for gradients
-    bgGradientEnd: "#B8E6F0",   // Darker blue for gradients
-    bgLight: "#FFFFFF",         // White background
-    bgCream: "#FFF8F0",         // Cream background
-    bgOverlay: "rgba(45, 52, 54, 0.3)", // Soft dark overlay
-    
-    // UI Elements - Buttons
-    buttonPrimary: "#FF9B70",  // Orange button (brand color)
-    buttonHover: "#FF7A47",    // Darker orange hover
-    buttonText: "#FFFFFF",     // White button text
-    buttonSecondary: "#B8E6F0", // Soft blue button
-    buttonSecondaryText: "#2D3436", // Dark text on light button
-    
-    // Card & Surface Colors
-    cardBg: "#FFFFFF",         // White card background
-    cardBgAlt: "#FFF8F0",      // Cream card background
-    surfaceLight: "#F8F9FA",   // Light surface
-    
-    // Social Media & Icons
-    iconBg: "#FF9B70",         // Orange icon background
-    iconHover: "#FF7A47",      // Darker orange on hover
-    iconAlt: "#B8E6F0",        // Blue icon alternative
-    
-    // Decorative Food Colors (Soft/Pastel)
-    vegetableGreen: "#7FD8BE", // Soft mint green
-    carrotOrange: "#FFB088",   // Soft orange
-    tomatoRed: "#FF8B94",      // Soft coral red
-    eggYellow: "#FFE5A0",      // Soft yellow
-    breadBeige: "#F5DEB3",     // Wheat/beige
-    
-    // Status Colors (Soft tones)
-    success: "#7FD8BE",        // Soft green
-    warning: "#FFD57E",        // Soft yellow
-    error: "#FF8B94",          // Soft red
-    info: "#8DD4E6",           // Soft blue
+    // ── Primary: Warm Coral/Peach ──
+    primary: "#FF7B7B",
+    primaryDark: "#E85D5D",
+    primaryLight: "#FFA8A8",
+    primaryPastel: "#FFD4D4",
+
+    // ── Secondary: Soft Lavender ──
+    secondary: "#B8A9E8",
+    secondaryDark: "#9580D6",
+    secondaryLight: "#D4C8F5",
+    secondaryPastel: "#EDE7FF",
+
+    // ── Accent: Mint Green ──
+    accent: "#7ECFB3",
+    accentDark: "#5BB89A",
+    accentLight: "#B0E8D5",
+    accentPastel: "#DDFAF0",
+
+    // ── Warm: Soft Yellow ──
+    warm: "#FFD98E",
+    warmDark: "#FFC35C",
+    warmLight: "#FFECC4",
+    warmPastel: "#FFF7E6",
+
+    // ── Sky: Pastel Blue ──
+    sky: "#8ECAE6",
+    skyDark: "#62B3D9",
+    skyLight: "#BDE0F0",
+    skyPastel: "#E6F4FA",
+
+    // ── Neutrals ──
+    black: "#2B2B3D",
+    white: "#FFFFFF",
+    cream: "#FFF9F5",
+    gray50: "#FAFAF9",
+    gray100: "#F5F3F0",
+    gray200: "#E8E5E0",
+    gray300: "#D1CCC4",
+    gray400: "#A8A29E",
+    gray500: "#78716C",
+    gray600: "#57534E",
+    gray700: "#3D3935",
+
+    // ── Text ──
+    textPrimary: "#2B2B3D",
+    textSecondary: "#57534E",
+    textMuted: "#A8A29E",
+    textAccent: "#FF7B7B",
+    textLight: "#FFFFFF",
+
+    // ── Backgrounds ──
+    bgPrimary: "#FFF9F5",
+    bgCard: "#FFFFFF",
+    bgGradientStart: "#FFF9F5",
+    bgGradientEnd: "#FFF0EB",
+    bgLight: "#FFFFFF",
+    bgCream: "#FFF9F5",
+    bgOverlay: "rgba(43, 43, 61, 0.4)",
+
+    // ── Pixel shadow colors ──
+    pixelShadow: "#2B2B3D",
+    pixelBorder: "#2B2B3D",
+    pixelBorderLight: "#D1CCC4",
+
+    // ── Buttons ──
+    buttonPrimary: "#FF7B7B",
+    buttonHover: "#E85D5D",
+    buttonText: "#FFFFFF",
+    buttonSecondary: "#B8A9E8",
+    buttonSecondaryText: "#FFFFFF",
+    buttonGhost: "transparent",
+
+    // ── Card & Surface ──
+    cardBg: "#FFFFFF",
+    cardBgAlt: "#FFF9F5",
+    surfaceLight: "#FAFAF9",
+
+    // ── Decorative Pastels ──
+    pastelPink: "#FFD4D4",
+    pastelLavender: "#EDE7FF",
+    pastelMint: "#DDFAF0",
+    pastelYellow: "#FFF7E6",
+    pastelBlue: "#E6F4FA",
+    pastelPeach: "#FFE8D6",
+
+    // ── Status ──
+    success: "#7ECFB3",
+    warning: "#FFD98E",
+    error: "#FF7B7B",
+    info: "#8ECAE6",
 } as const;
 
 export type Colors = typeof colors;
-

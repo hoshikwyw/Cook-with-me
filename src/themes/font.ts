@@ -1,147 +1,131 @@
-import { colors } from "./color";
 import type { CSSProperties } from "react";
 
 type FontStyle = CSSProperties;
 
 export const fonts: Record<string, FontStyle> = {
-    // Main Hero Heading - Fredoka Bold (Matches the thick, rounded strokes)
+    // ── Pixel headings — "Press Start 2P" for that retro pixel vibe ──
+
     heroTitle: {
-        fontFamily: "'Fredoka', sans-serif",
-        fontWeight: 700,
-        fontSize: '64px',
-        fontStyle: 'normal',
-        lineHeight: '1.2',
-        color: colors.textAccent,
-        textShadow: '2px 4px 8px rgba(255, 155, 112, 0.2)'
-    },
-    
-    // Large Heading (H1) - Fredoka Bold
-    h1: {
-        fontFamily: "'Fredoka', sans-serif",
-        fontWeight: 700,
-        fontSize: '48px',
-        fontStyle: 'normal',
-        lineHeight: '1.3',
-        color: colors.textPrimary
-    },
-    
-    // Secondary Heading (H2) - Fredoka Bold
-    h2: {
-        fontFamily: "'Fredoka', sans-serif",
-        fontWeight: 700,
+        fontFamily: "'Press Start 2P', monospace",
+        fontWeight: 400,
         fontSize: '36px',
-        fontStyle: 'normal',
-        lineHeight: '1.4',
-        color: colors.textPrimary
+        lineHeight: '1.6',
+        letterSpacing: '1px',
     },
-    
-    // Tertiary Heading (H3) - Fredoka SemiBold
+
+    h1: {
+        fontFamily: "'Press Start 2P', monospace",
+        fontWeight: 400,
+        fontSize: '24px',
+        lineHeight: '1.6',
+        letterSpacing: '0.5px',
+    },
+
+    h2: {
+        fontFamily: "'Press Start 2P', monospace",
+        fontWeight: 400,
+        fontSize: '18px',
+        lineHeight: '1.6',
+        letterSpacing: '0.5px',
+    },
+
     h3: {
-        fontFamily: "'Fredoka', sans-serif",
-        fontWeight: 600,
-        fontSize: '24px',
-        fontStyle: 'normal',
-        lineHeight: '1.5',
-        color: colors.textPrimary
+        fontFamily: "'Press Start 2P', monospace",
+        fontWeight: 400,
+        fontSize: '14px',
+        lineHeight: '1.8',
+        letterSpacing: '0.5px',
     },
-    
-    // Small Heading - Nunito SemiBold
+
     h4: {
-        fontFamily: "'Fredoka', sans-serif",
-        fontWeight: 600,
-        fontSize: '18px',
-        fontStyle: 'normal',
-        lineHeight: '1.5',
-        color: colors.textPrimary
+        fontFamily: "'Press Start 2P', monospace",
+        fontWeight: 400,
+        fontSize: '11px',
+        lineHeight: '1.8',
+        letterSpacing: '0.5px',
     },
-    
-    // Subtitle/Tagline - Nunito Medium
+
+    // ── Body text — Nunito for readability with cute rounded feel ──
+
     subtitle: {
-        fontFamily: "'Fredoka', sans-serif",
-        fontWeight: 500,
-        fontSize: '16px',
-        fontStyle: 'normal',
+        fontFamily: "'Nunito', sans-serif",
+        fontWeight: 600,
+        fontSize: '18px',
         lineHeight: '1.6',
-        letterSpacing: '0.03em',
-        color: colors.textSecondary
+        letterSpacing: '0.02em',
     },
-    
-    // Body Text - Nunito Regular
+
     body: {
-        fontFamily: "'Fredoka', sans-serif",
+        fontFamily: "'Nunito', sans-serif",
         fontWeight: 400,
         fontSize: '16px',
-        fontStyle: 'normal',
         lineHeight: '1.7',
-        color: colors.textSecondary
     },
-    
-    // Body Large - Nunito Regular
+
     bodyLarge: {
-        fontFamily: "'Fredoka', sans-serif",
+        fontFamily: "'Nunito', sans-serif",
         fontWeight: 400,
         fontSize: '18px',
-        fontStyle: 'normal',
         lineHeight: '1.7',
-        color: colors.textSecondary
     },
-    
-    // Body Small / Captions - Quicksand Medium
+
     bodySmall: {
-        fontFamily: "'Quicksand', sans-serif",
+        fontFamily: "'Nunito', sans-serif",
         fontWeight: 500,
         fontSize: '14px',
-        fontStyle: 'normal',
         lineHeight: '1.6',
-        color: colors.textMuted
     },
-    
-    // Button Text - Nunito SemiBold
+
+    // ── UI text ──
+
     button: {
-       fontFamily: "'Fredoka', sans-serif",
-        fontWeight: 600,
-        fontSize: '16px',
-        fontStyle: 'normal',
+        fontFamily: "'Press Start 2P', monospace",
+        fontWeight: 400,
+        fontSize: '11px',
         lineHeight: '1',
-        letterSpacing: '0.02em',
-        color: colors.buttonText
+        letterSpacing: '0.5px',
     },
-    
-    // Button Large - Nunito SemiBold
+
     buttonLarge: {
-        fontFamily: "'Fredoka', sans-serif",
-        fontWeight: 600,
-        fontSize: '18px',
-        fontStyle: 'normal',
+        fontFamily: "'Press Start 2P', monospace",
+        fontWeight: 400,
+        fontSize: '13px',
         lineHeight: '1',
-        letterSpacing: '0.03em',
-        color: colors.buttonText
+        letterSpacing: '0.5px',
     },
-    
-    // Navigation - Nunito SemiBold
+
     nav: {
-        fontFamily: "'Fredoka', sans-serif",
-        fontWeight: 600,
-        fontSize: '14px',
-        fontStyle: 'normal',
+        fontFamily: "'Press Start 2P', monospace",
+        fontWeight: 400,
+        fontSize: '10px',
         lineHeight: '1',
-        letterSpacing: '0.03em',
-        color: colors.textPrimary
+        letterSpacing: '0.5px',
     },
-    
-    // Brand Logo Text - Fredoka Bold
+
     logo: {
-        fontFamily: "'Fredoka', sans-serif",
-        fontWeight: 700,
-        fontSize: '24px',
-        fontStyle: 'normal',
+        fontFamily: "'Press Start 2P', monospace",
+        fontWeight: 400,
+        fontSize: '16px',
         lineHeight: '1',
-        letterSpacing: '0.02em',
-        fontVariationSettings: "'wdth' 100",
-        color: colors.textAccent,
-        textShadow: '1px 2px 4px rgba(255, 155, 112, 0.15)'
-    }
+        letterSpacing: '1px',
+    },
+
+    caption: {
+        fontFamily: "'Nunito', sans-serif",
+        fontWeight: 600,
+        fontSize: '12px',
+        lineHeight: '1.5',
+        letterSpacing: '0.04em',
+        textTransform: 'uppercase' as const,
+    },
+
+    tag: {
+        fontFamily: "'Press Start 2P', monospace",
+        fontWeight: 400,
+        fontSize: '8px',
+        lineHeight: '1',
+        letterSpacing: '0.5px',
+    },
 };
 
 export type Fonts = typeof fonts;
-
