@@ -8,7 +8,6 @@ import Home from './pages/Home';
 import Recipes from './pages/Recipes';
 import RecipeDetail from './pages/RecipeDetail';
 import About from './pages/About';
-import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -24,7 +23,6 @@ function App() {
                   <Route path="/recipes" element={<Recipes />} />
                   <Route path="/recipes/:id" element={<RecipeDetail />} />
                   <Route path="/about" element={<About />} />
-                  <Route path="/contact" element={<Contact />} />
                 </Routes>
               </PageTransition>
             </main>

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { getRecipes, getCategories } from '../services/recipeService';
 import { useTheme } from '../context/ThemeContext';
 import { useFavorites } from '../context/FavoritesContext';
@@ -8,19 +8,36 @@ import { fonts } from '../themes/font';
 import { PageHeader, Container, Card, Badge, Button, Input } from '../components/common';
 
 export default function Recipes() {
+  const [searchParams] = useSearchParams();
+  const initialCategory = searchParams.get('category') ?? 'All';
+  const isQuickFilter = initialCategory === 'quick';
+
   const [search, setSearch] = useState('');
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState(isQuickFilter ? 'All' : initialCategory);
+  const [quickOnly, setQuickOnly] = useState(isQuickFilter);
   const { colors } = useTheme();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { t } = useTranslation();
   const categories = getCategories();
+
+  useEffect(() => {
+    const cat = searchParams.get('category') ?? 'All';
+    if (cat === 'quick') {
+      setActiveCategory('All');
+      setQuickOnly(true);
+    } else {
+      setActiveCategory(cat);
+      setQuickOnly(false);
+    }
+  }, [searchParams]);
 
   const filtered = getRecipes().filter((recipe) => {
     const matchesSearch =
       recipe.title.toLowerCase().includes(search.toLowerCase()) ||
       recipe.description.toLowerCase().includes(search.toLowerCase());
     const matchesCategory = activeCategory === 'All' || recipe.category === activeCategory;
-    return matchesSearch && matchesCategory;
+    const matchesQuick = !quickOnly || parseInt(recipe.prepTime) <= 10;
+    return matchesSearch && matchesCategory && matchesQuick;
   });
 
   return (

@@ -15,14 +15,16 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-10">
           {/* Brand */}
           <div>
-            <span style={{ ...fonts.logo, color: colors.primary }}>
-              Cook With Me
-            </span>
+            <div className="flex items-center gap-2 mb-3">
+              <span style={{ ...fonts.logo, color: colors.primary }}>
+                Cook With Me
+              </span>
+            </div>
             <p
               style={{
                 ...fonts.body,
                 color: colors.gray400,
-                marginTop: '12px',
+                lineHeight: '1.8',
                 whiteSpace: 'pre-line',
               }}
             >
@@ -40,7 +42,6 @@ export default function Footer() {
                 { label: t('nav.home'), path: '/' },
                 { label: t('nav.recipes'), path: '/recipes' },
                 { label: t('nav.about'), path: '/about' },
-                { label: t('nav.contact'), path: '/contact' },
               ].map((link) => (
                 <Link
                   key={link.path}

@@ -18,11 +18,11 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
 
   return (
     <Card variant="default" hover>
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-44 overflow-hidden">
         <img
           src={recipe.image}
           alt={recipe.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
         />
         <div className="absolute top-3 right-3">
           <Badge variant="warm">{recipe.category.toUpperCase()}</Badge>
@@ -33,32 +33,34 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
             toggleFavorite(recipe.id);
           }}
           style={{
-            ...fonts.tag,
+            ...fonts.h4,
             position: 'absolute',
-            top: '12px',
-            left: '12px',
-            backgroundColor: fav ? colors.primaryPastel : colors.white,
+            top: '10px',
+            left: '10px',
+            backgroundColor: fav ? colors.primaryPastel : colors.cardBg,
             color: fav ? colors.primary : colors.textMuted,
             border: `2px solid ${fav ? colors.primary : colors.pixelBorder}`,
             boxShadow: `2px 2px 0px ${fav ? colors.primary : colors.pixelBorder}`,
-            padding: '4px 8px',
+            padding: '5px 8px',
             cursor: 'pointer',
-            transition: 'all 0.1s ease',
+            transition: 'all 0.15s ease',
+            lineHeight: 1,
           }}
+          className={`heart-pop ${fav ? 'animate-heartbeat' : ''}`}
         >
           {fav ? '<3' : '..'}
         </button>
       </div>
-      <div className="p-5">
+      <div className="p-4">
         <h3
           style={{ ...fonts.h4, color: colors.textPrimary }}
-          className="mb-2"
+          className="mb-1"
         >
           {recipe.title}
         </h3>
         <p
           style={{ ...fonts.bodySmall, color: colors.textMuted }}
-          className="mb-4 line-clamp-2"
+          className="mb-3 line-clamp-2"
         >
           {recipe.description}
         </p>

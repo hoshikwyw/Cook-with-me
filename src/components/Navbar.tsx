@@ -14,7 +14,6 @@ export default function Navbar() {
     { label: t('nav.home'), path: '/' },
     { label: t('nav.recipes'), path: '/recipes' },
     { label: t('nav.about'), path: '/about' },
-    { label: t('nav.contact'), path: '/contact' },
   ];
 
   const isActive = (path: string) =>
