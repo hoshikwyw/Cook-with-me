@@ -87,20 +87,34 @@ export default function Home() {
               {t('home.featuredRecipes')}
             </h2>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 stagger-children">
-            {loading
-              ? Array.from({ length: 6 }).map((_, i) => (
-                  <div key={i} className="animate-fade-in-up" style={{ opacity: 0 }}>
-                    <RecipeCardSkeleton />
-                  </div>
-                ))
-              : (featured.length > 0 ? featured : recipes).map((recipe) => (
-                  <div key={recipe.id} className="animate-fade-in-up" style={{ opacity: 0 }}>
-                    <RecipeCard recipe={recipe} />
-                  </div>
-                ))
-            }
-          </div>
+          {loading ? (
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <RecipeCardSkeleton key={i} />
+              ))}
+            </div>
+          ) : recipes.length === 0 ? (
+            <div className="text-center py-10 sm:py-16 space-y-4">
+              <div className="text-4xl sm:text-5xl">🍳</div>
+              <p style={{ color: colors.textPrimary, fontFamily: "'Nunito', sans-serif", fontWeight: 700 }} className="text-sm sm:text-base">
+                No recipes yet!
+              </p>
+              <p style={{ color: colors.textMuted, fontFamily: "'Nunito', sans-serif" }} className="text-xs sm:text-sm max-w-xs mx-auto">
+                Recipes will show up here once they're added. Check back soon!
+              </p>
+              <Link to="/recipes">
+                <Button variant="outline" size="md">BROWSE RECIPES</Button>
+              </Link>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 stagger-children">
+              {(featured.length > 0 ? featured : recipes).map((recipe) => (
+                <div key={recipe.id} className="animate-fade-in-up" style={{ opacity: 0 }}>
+                  <RecipeCard recipe={recipe} />
+                </div>
+              ))}
+            </div>
+          )}
         </Container>
       </section>
 
