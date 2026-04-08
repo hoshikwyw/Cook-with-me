@@ -3,12 +3,24 @@ export interface Recipe {
   title: string;
   description: string;
   image: string;
-  prepTime: string;
-  cookTime: string;
+  prep_time: string;
+  cook_time: string;
   servings: number;
+  difficulty: 'Easy' | 'Medium' | 'Hard';
   ingredients: string[];
   instructions: string[];
   category: string;
+  category_slug: string;
+  is_featured: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  icon?: string;
 }
 
 export interface User {
@@ -26,11 +38,4 @@ export interface Review {
   rating: number;
   comment: string;
   createdAt: string;
-}
-
-export interface Category {
-  id: string;
-  name: string;
-  slug: string;
-  icon?: string;
 }

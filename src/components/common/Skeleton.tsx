@@ -20,9 +20,8 @@ export default function Skeleton({
     width,
     height,
     backgroundColor: colors.gray200,
-    border: `2px solid ${colors.gray300}`,
-    animation: 'pulse-pixel 1.5s steps(3) infinite',
-    ...(variant === 'circle' ? { borderRadius: '50%' } : {}),
+    borderRadius: variant === 'circle' ? '50%' : '12px',
+    animation: 'pulse-pixel 1.5s ease-in-out infinite',
   };
 
   return <div style={style} className={className} />;
@@ -35,19 +34,19 @@ export function RecipeCardSkeleton() {
     <div
       style={{
         backgroundColor: colors.cardBg,
-        border: `3px solid ${colors.pixelBorder}`,
-        boxShadow: `4px 4px 0px ${colors.pixelBorder}`,
+        borderRadius: '20px',
         overflow: 'hidden',
+        border: `2px solid ${colors.gray200}`,
       }}
     >
-      <Skeleton height="192px" />
-      <div className="p-5 space-y-3">
-        <Skeleton height="14px" width="70%" />
+      <Skeleton height="180px" className="!rounded-none" />
+      <div className="px-5 pb-5 pt-3 space-y-3">
+        <Skeleton height="16px" width="75%" />
         <Skeleton height="12px" width="100%" />
-        <Skeleton height="12px" width="60%" />
-        <div className="flex justify-between pt-2">
-          <Skeleton height="10px" width="40px" />
-          <Skeleton height="30px" width="80px" />
+        <Skeleton height="12px" width="50%" />
+        <div className="flex justify-between items-center pt-2">
+          <Skeleton height="14px" width="60px" />
+          <Skeleton height="28px" width="80px" className="!rounded-full" />
         </div>
       </div>
     </div>

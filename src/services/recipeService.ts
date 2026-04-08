@@ -1,30 +1,72 @@
-import { featuredRecipes } from '../data/recipes';
-import type { Recipe } from '../types';
+import { supabase } from '../lib/supabase';
+import type { Recipe, Category } from '../types';
 
-export function getRecipes(): Recipe[] {
-  return featuredRecipes;
+// Fetch all recipes (from the view that joins with categories)
+export async function getRecipes(): Promise<Recipe[]> {
+  const { data, error } = await supabase
+    .from('recipes_with_category')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return data ?? [];
 }
 
-export function getRecipeById(id: string): Recipe | undefined {
-  return featuredRecipes.find((r) => r.id === id);
+// Fetch featured recipes only
+export async function getFeaturedRecipes(): Promise<Recipe[]> {
+  const { data, error } = await supabase
+    .from('recipes_with_category')
+    .select('*')
+    .eq('is_featured', true)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return data ?? [];
 }
 
-export function searchRecipes(query: string): Recipe[] {
-  const q = query.toLowerCase();
-  return featuredRecipes.filter(
-    (r) =>
-      r.title.toLowerCase().includes(q) ||
-      r.description.toLowerCase().includes(q) ||
-      r.category.toLowerCase().includes(q),
-  );
+// Fetch a single recipe by ID
+export async function getRecipeById(id: string): Promise<Recipe | null> {
+  const { data, error } = await supabase
+    .from('recipes_with_category')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error) return null;
+  return data;
 }
 
-export function getRecipesByCategory(category: string): Recipe[] {
-  if (category === 'All') return featuredRecipes;
-  return featuredRecipes.filter((r) => r.category === category);
+// Search recipes by query string
+export async function searchRecipes(query: string): Promise<Recipe[]> {
+  const { data, error } = await supabase
+    .from('recipes_with_category')
+    .select('*')
+    .or(`title.ilike.%${query}%,description.ilike.%${query}%`)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return data ?? [];
 }
 
-export function getCategories(): string[] {
-  const cats = new Set(featuredRecipes.map((r) => r.category));
-  return ['All', ...Array.from(cats)];
+// Fetch recipes by category name
+export async function getRecipesByCategory(category: string): Promise<Recipe[]> {
+  const { data, error } = await supabase
+    .from('recipes_with_category')
+    .select('*')
+    .eq('category', category)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return data ?? [];
+}
+
+// Fetch all categories
+export async function getCategories(): Promise<Category[]> {
+  const { data, error } = await supabase
+    .from('categories')
+    .select('*')
+    .order('name');
+
+  if (error) throw error;
+  return data ?? [];
 }
