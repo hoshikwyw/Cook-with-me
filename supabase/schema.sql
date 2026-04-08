@@ -41,6 +41,17 @@ create policy "Public can read categories" on categories
 create policy "Public can read recipes" on recipes
   for select using (true);
 
+-- Write access via anon key (admin dashboard uses client-side auth gate)
+-- NOTE: Move to Supabase Auth + RLS when ready for production
+create policy "Allow insert recipes" on recipes
+  for insert with check (true);
+
+create policy "Allow update recipes" on recipes
+  for update using (true);
+
+create policy "Allow delete recipes" on recipes
+  for delete using (true);
+
 -- Create a view that joins recipes with categories for easy querying
 create or replace view recipes_with_category as
 select

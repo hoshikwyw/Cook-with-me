@@ -70,3 +70,45 @@ export async function getCategories(): Promise<Category[]> {
   if (error) throw error;
   return data ?? [];
 }
+
+// ── Write operations (admin) ──
+
+export interface RecipeInput {
+  title: string;
+  description: string;
+  image: string;
+  prep_time: string;
+  cook_time: string;
+  servings: number;
+  difficulty: 'Easy' | 'Medium' | 'Hard';
+  ingredients: string[];
+  instructions: string[];
+  category_id: string;
+  is_featured: boolean;
+}
+
+export async function createRecipe(input: RecipeInput): Promise<void> {
+  const { error } = await supabase.from('recipes').insert(input);
+  if (error) throw error;
+}
+
+export async function updateRecipe(id: string, input: Partial<RecipeInput>): Promise<void> {
+  const { error } = await supabase.from('recipes').update({ ...input, updated_at: new Date().toISOString() }).eq('id', id);
+  if (error) throw error;
+}
+
+export async function deleteRecipe(id: string): Promise<void> {
+  const { error } = await supabase.from('recipes').delete().eq('id', id);
+  if (error) throw error;
+}
+
+// Fetch a raw recipe (from recipes table, not the view) for editing
+export async function getRawRecipeById(id: string) {
+  const { data, error } = await supabase
+    .from('recipes')
+    .select('*')
+    .eq('id', id)
+    .single();
+  if (error) return null;
+  return data;
+}

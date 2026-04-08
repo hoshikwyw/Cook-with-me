@@ -97,9 +97,33 @@ export default function Footer() {
           <p style={{ ...fonts.bodySmall, color: colors.gray500 }} className="text-xs sm:text-sm">
             &copy; 2026 {t('footer.rights')}
           </p>
-          <p style={{ ...fonts.tag, color: colors.gray600 }}>
-            {t('footer.madeWith')}
-          </p>
+          <div className="flex items-center gap-3">
+            <p style={{ ...fonts.tag, color: colors.gray600 }}>
+              {t('footer.madeWith')}
+            </p>
+            <Link
+              to="/admin"
+              style={{
+                color: colors.gray700,
+                backgroundColor: colors.gray700,
+                border: `1px solid ${colors.gray600}`,
+                borderRadius: '50%',
+                width: '24px',
+                height: '24px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease',
+                fontSize: '14px',
+                lineHeight: 1,
+              }}
+              className="hover:border-primary hover:text-primary"
+              title=""
+            >
+              <span style={{ color: colors.gray600 }}>+</span>
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
