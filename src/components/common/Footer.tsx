@@ -11,22 +11,18 @@ export default function Footer() {
     <footer style={{ backgroundColor: colors.black, color: colors.textLight }}>
       <div className="pixel-divider-primary" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-3 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span style={{ ...fonts.logo, color: colors.primary }}>
-                Cook With Me
-              </span>
-            </div>
+            <span style={{ ...fonts.logo, color: colors.primary, fontSize: undefined }}
+              className="text-[12px] sm:text-[16px]"
+            >
+              Cook With Me
+            </span>
             <p
-              style={{
-                ...fonts.body,
-                color: colors.gray400,
-                lineHeight: '1.8',
-                whiteSpace: 'pre-line',
-              }}
+              style={{ ...fonts.body, color: colors.gray400, lineHeight: '1.8', whiteSpace: 'pre-line' }}
+              className="mt-3 text-sm"
             >
               {t('footer.tagline')}
             </p>
@@ -34,10 +30,12 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <h4 style={{ ...fonts.h4, color: colors.primary, marginBottom: '16px' }}>
+            <h4 style={{ ...fonts.h4, color: colors.primary, fontSize: undefined }}
+              className="mb-3 sm:mb-4 text-[10px] sm:text-[11px]"
+            >
               {t('footer.navigate')}
             </h4>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2 sm:gap-3">
               {[
                 { label: t('nav.home'), path: '/' },
                 { label: t('nav.recipes'), path: '/recipes' },
@@ -46,12 +44,7 @@ export default function Footer() {
                 <Link
                   key={link.path}
                   to={link.path}
-                  style={{
-                    ...fonts.bodySmall,
-                    color: colors.gray400,
-                    textDecoration: 'none',
-                    transition: 'color 0.2s ease',
-                  }}
+                  style={{ ...fonts.bodySmall, color: colors.gray400, textDecoration: 'none' }}
                   className="hover:text-white"
                 >
                   &gt; {link.label}
@@ -62,10 +55,12 @@ export default function Footer() {
 
           {/* Socials */}
           <div>
-            <h4 style={{ ...fonts.h4, color: colors.primary, marginBottom: '16px' }}>
+            <h4 style={{ ...fonts.h4, color: colors.primary, fontSize: undefined }}
+              className="mb-3 sm:mb-4 text-[10px] sm:text-[11px]"
+            >
               {t('footer.followUs')}
             </h4>
-            <div className="flex gap-3">
+            <div className="flex gap-2 sm:gap-3">
               {[
                 { label: 'X', href: 'https://x.com' },
                 { label: 'IG', href: 'https://instagram.com' },
@@ -82,15 +77,10 @@ export default function Footer() {
                     backgroundColor: colors.gray700,
                     color: colors.primary,
                     border: `2px solid ${colors.gray600}`,
-                    width: '40px',
-                    height: '40px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
                     textDecoration: 'none',
-                    transition: 'all 0.15s ease',
                   }}
-                  className="hover:border-primary"
+                  className="w-10 h-10 sm:w-10 sm:h-10 hover:border-primary"
                 >
                   {social.label}
                 </a>
@@ -101,10 +91,10 @@ export default function Footer() {
 
         {/* Bottom */}
         <div
-          style={{ borderTop: `2px solid ${colors.gray700}`, marginTop: '40px', paddingTop: '20px' }}
-          className="flex flex-col sm:flex-row justify-between items-center gap-4"
+          style={{ borderTop: `2px solid ${colors.gray700}` }}
+          className="mt-8 sm:mt-10 pt-5 flex flex-col sm:flex-row justify-between items-center gap-3"
         >
-          <p style={{ ...fonts.bodySmall, color: colors.gray500 }}>
+          <p style={{ ...fonts.bodySmall, color: colors.gray500 }} className="text-xs sm:text-sm">
             &copy; 2026 {t('footer.rights')}
           </p>
           <p style={{ ...fonts.tag, color: colors.gray600 }}>

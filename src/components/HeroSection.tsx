@@ -20,27 +20,23 @@ export default function HeroSection({ featuredRecipe }: HeroSectionProps) {
         style={{ backgroundColor: colors.bgPrimary }}
         className="relative overflow-hidden pixel-hearts"
       >
-        <Container className="py-16 sm:py-24 relative z-10">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center md:min-h-[65vh]">
+        <Container className="py-10 sm:py-16 md:py-24 relative z-10">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-16 items-center md:min-h-[60vh]">
             {/* Left: Text */}
-            <div className="space-y-8 text-center md:text-left">
+            <div className="space-y-5 sm:space-y-8 text-center md:text-left">
               <div
-                style={{
-                  ...fonts.tag,
-                  color: colors.secondary,
-                  letterSpacing: '2px',
-                }}
+                style={{ ...fonts.tag, color: colors.secondary, letterSpacing: '2px' }}
               >
                 {t('hero.tagline')}
               </div>
 
               <div>
-                <h1 style={{ ...fonts.heroTitle, color: colors.textPrimary }}>
-                  <span className="text-2xl sm:text-3xl lg:text-[38px] block leading-relaxed">
+                <h1 style={{ ...fonts.heroTitle, color: colors.textPrimary, fontSize: undefined }}>
+                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-[38px] block leading-relaxed">
                     {t('hero.title1')}
                   </span>
                   <span
-                    className="text-2xl sm:text-3xl lg:text-[38px] block leading-relaxed"
+                    className="text-xl sm:text-2xl md:text-3xl lg:text-[38px] block leading-relaxed"
                     style={{ color: colors.primary }}
                   >
                     {t('hero.title2')}
@@ -49,13 +45,8 @@ export default function HeroSection({ featuredRecipe }: HeroSectionProps) {
               </div>
 
               <p
-                style={{
-                  ...fonts.body,
-                  color: colors.textSecondary,
-                  maxWidth: '400px',
-                  lineHeight: '1.8',
-                }}
-                className="mx-auto md:mx-0"
+                style={{ ...fonts.body, color: colors.textSecondary, lineHeight: '1.8' }}
+                className="mx-auto md:mx-0 max-w-[400px] text-sm sm:text-base"
               >
                 {t('hero.subtitle')}
               </p>
@@ -69,54 +60,47 @@ export default function HeroSection({ featuredRecipe }: HeroSectionProps) {
               </div>
             </div>
 
-            {/* Right: Food images */}
-            <div className="relative h-[280px] sm:h-[380px] md:h-[480px] hidden sm:block">
-              {/* Main large image */}
-              <div
-                style={{
-                  border: `4px solid ${colors.pixelBorder}`,
-                  boxShadow: `6px 6px 0px ${colors.pixelBorder}`,
-                  backgroundColor: colors.cardBg,
-                  overflow: 'hidden',
-                }}
-                className="absolute top-4 right-4 w-[180px] h-[180px] sm:w-[200px] sm:h-[200px] md:w-[260px] md:h-[260px]"
-              >
-                <img src="/stew.png" alt="Stew" className="w-full h-full object-cover" />
-              </div>
-
-              {/* Secondary image */}
-              <div
-                style={{
-                  border: `4px solid ${colors.pixelBorder}`,
-                  boxShadow: `6px 6px 0px ${colors.pixelBorder}`,
-                  backgroundColor: colors.cardBg,
-                  overflow: 'hidden',
-                }}
-                className="absolute bottom-4 right-12 w-[150px] h-[150px] sm:w-[180px] sm:h-[180px] md:w-[220px] md:h-[220px]"
-              >
-                <img src="/fish.png" alt="Fish" className="w-full h-full object-cover" />
-              </div>
-
-              {/* Small accent image */}
+            {/* Right: Food images — hidden on small mobile */}
+            <div className="relative h-[220px] sm:h-[320px] md:h-[420px] hidden sm:block">
               <div
                 style={{
                   border: `3px solid ${colors.pixelBorder}`,
                   boxShadow: `4px 4px 0px ${colors.pixelBorder}`,
                   backgroundColor: colors.cardBg,
                   overflow: 'hidden',
+                }}
+                className="absolute top-2 right-2 w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] md:w-[240px] md:h-[240px]"
+              >
+                <img src="/stew.png" alt="Stew" className="w-full h-full object-cover" />
+              </div>
+
+              <div
+                style={{
+                  border: `3px solid ${colors.pixelBorder}`,
+                  boxShadow: `4px 4px 0px ${colors.pixelBorder}`,
+                  backgroundColor: colors.cardBg,
+                  overflow: 'hidden',
+                }}
+                className="absolute bottom-2 right-8 w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] md:w-[200px] md:h-[200px]"
+              >
+                <img src="/fish.png" alt="Fish" className="w-full h-full object-cover" />
+              </div>
+
+              <div
+                style={{
+                  border: `2px solid ${colors.pixelBorder}`,
+                  boxShadow: `3px 3px 0px ${colors.pixelBorder}`,
+                  backgroundColor: colors.cardBg,
+                  overflow: 'hidden',
                   zIndex: 10,
                 }}
-                className="absolute top-1/2 left-4 -translate-y-1/2 w-[70px] h-[70px] sm:w-[90px] sm:h-[90px] md:w-[110px] md:h-[110px]"
+                className="absolute top-1/2 left-2 -translate-y-1/2 w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px]"
               >
                 <img src="/noodle.png" alt="Noodle" className="w-full h-full object-cover" />
               </div>
 
-              {/* Floating decorations */}
-              <div className="absolute top-8 right-[55%] animate-float hidden md:block" style={{ animationDelay: '0s' }}>
-                <img src="/bread.png" alt="" className="w-12 h-12 object-cover" />
-              </div>
-              <div className="absolute top-0 right-[50%] animate-float hidden md:block" style={{ animationDelay: '1.5s' }}>
-                <img src="/pancake.png" alt="" className="w-12 h-12 object-cover" />
+              <div className="absolute top-4 right-[50%] animate-float hidden md:block">
+                <img src="/bread.png" alt="" className="w-10 h-10 md:w-12 md:h-12 object-cover" />
               </div>
             </div>
           </div>
@@ -125,23 +109,28 @@ export default function HeroSection({ featuredRecipe }: HeroSectionProps) {
         <div className="pixel-divider" />
       </div>
 
-      {/* Featured Recipe — cleaner layout */}
-      <div style={{ backgroundColor: colors.bgLight }} className="py-16">
+      {/* Featured Recipe */}
+      <div style={{ backgroundColor: colors.bgLight }} className="py-10 sm:py-16">
         <Container>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
             <Card variant="default">
               <img
                 src={featuredRecipe.image}
                 alt={featuredRecipe.title}
-                className="w-full h-56 sm:h-72 object-cover"
+                className="w-full h-48 sm:h-56 md:h-72 object-cover"
               />
             </Card>
 
-            <div className="space-y-6">
-              <h2 style={{ ...fonts.h2, color: colors.textPrimary }} className="mb-2">
+            <div className="space-y-4 sm:space-y-6">
+              <h2
+                style={{ ...fonts.h2, color: colors.textPrimary, fontSize: undefined }}
+                className="text-sm sm:text-base md:text-lg mb-2"
+              >
                 {featuredRecipe.title}
               </h2>
-              <p style={{ ...fonts.body, color: colors.textSecondary, lineHeight: '1.8' }}>
+              <p style={{ ...fonts.body, color: colors.textSecondary, lineHeight: '1.8' }}
+                className="text-sm sm:text-base"
+              >
                 {featuredRecipe.description}
               </p>
               <Link to="/recipes">

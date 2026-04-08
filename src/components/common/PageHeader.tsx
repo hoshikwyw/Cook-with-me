@@ -14,14 +14,20 @@ export default function PageHeader({ title, subtitle, children }: PageHeaderProp
   return (
     <section
       style={{ backgroundColor: colors.bgPrimary }}
-      className="py-20 pixel-cross relative"
+      className="py-10 sm:py-14 md:py-20 pixel-cross relative"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <h1 style={{ ...fonts.h1, color: colors.textPrimary }} className="mb-4">
+        <h1
+          style={{ ...fonts.h1, color: colors.textPrimary, fontSize: undefined }}
+          className="mb-3 sm:mb-4 text-base sm:text-lg md:text-2xl"
+        >
           {title}
         </h1>
         {subtitle && (
-          <p style={{ ...fonts.bodyLarge, color: colors.textSecondary }} className="max-w-2xl mx-auto">
+          <p
+            style={{ ...fonts.bodyLarge, color: colors.textSecondary, fontSize: undefined }}
+            className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg"
+          >
             {subtitle}
           </p>
         )}

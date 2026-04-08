@@ -50,11 +50,11 @@ export default function Recipes() {
       {/* Search & Filter */}
       <section
         style={{ backgroundColor: colors.bgLight, borderBottom: `3px solid ${colors.pixelBorder}` }}
-        className="py-6"
+        className="py-4 sm:py-6"
       >
         <Container>
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <div className="w-full max-w-sm">
+          <div className="flex flex-col gap-3 sm:gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="w-full sm:max-w-sm">
               <Input
                 type="text"
                 placeholder={t('recipes.search')}
@@ -62,7 +62,7 @@ export default function Recipes() {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-            <div className="flex gap-3 flex-wrap">
+            <div className="flex gap-2 flex-wrap">
               {categoryNames.map((cat) => (
                 <Button
                   key={cat}
@@ -79,23 +79,23 @@ export default function Recipes() {
       </section>
 
       {/* Grid */}
-      <section className="py-16">
+      <section className="py-8 sm:py-12 md:py-16">
         <Container>
           {loading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-8">
               {Array.from({ length: 6 }).map((_, i) => (
                 <RecipeCardSkeleton key={i} />
               ))}
             </div>
           ) : filtered.length === 0 ? (
-            <div className="text-center py-20">
+            <div className="text-center py-16 sm:py-20">
               <p style={{ ...fonts.h3, color: colors.textMuted }}>{t('recipes.noResults')}</p>
-              <p style={{ ...fonts.body, color: colors.textMuted, marginTop: '8px' }}>
+              <p style={{ ...fonts.body, color: colors.textMuted }} className="mt-2 text-sm sm:text-base">
                 {t('recipes.noResultsHint')}
               </p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-8">
               {filtered.map((recipe) => (
                 <RecipeCard key={recipe.id} recipe={recipe} />
               ))}

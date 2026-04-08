@@ -31,18 +31,20 @@ export default function Navbar() {
       }}
       className="sticky top-0 z-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl">🍳</span>
-            <span style={{ ...fonts.logo, color: colors.primary }}>
+          <Link to="/" className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <span className="text-xl sm:text-2xl">🍳</span>
+            <span style={{ ...fonts.logo, color: colors.primary, fontSize: undefined }}
+              className="text-[12px] sm:text-[16px]"
+            >
               Cook With Me
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -73,7 +75,6 @@ export default function Navbar() {
                 boxShadow: `2px 2px 0px ${colors.secondary}`,
                 padding: '6px 10px',
                 cursor: 'pointer',
-                transition: 'all 0.1s ease',
               }}
               className="pixel-hover"
             >
@@ -91,7 +92,6 @@ export default function Navbar() {
                 boxShadow: `2px 2px 0px ${colors.pixelBorder}`,
                 padding: '6px 10px',
                 cursor: 'pointer',
-                transition: 'all 0.1s ease',
               }}
               className="pixel-hover"
             >
@@ -100,7 +100,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile controls */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="md:hidden flex items-center gap-1.5">
             <button
               onClick={toggleLang}
               style={{
@@ -110,6 +110,11 @@ export default function Navbar() {
                 border: `2px solid ${colors.secondary}`,
                 padding: '6px 8px',
                 cursor: 'pointer',
+                minWidth: '36px',
+                minHeight: '36px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               {i18n.language === 'en' ? 'EN' : 'MM'}
@@ -123,6 +128,11 @@ export default function Navbar() {
                 border: `2px solid ${colors.pixelBorder}`,
                 padding: '6px 8px',
                 cursor: 'pointer',
+                minWidth: '36px',
+                minHeight: '36px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               {isDark ? 'LIT' : 'DIM'}
@@ -135,13 +145,17 @@ export default function Navbar() {
                 color: isMobileMenuOpen ? colors.textLight : colors.textPrimary,
                 border: `3px solid ${colors.pixelBorder}`,
                 boxShadow: isMobileMenuOpen ? 'none' : `2px 2px 0px ${colors.pixelBorder}`,
-                padding: '8px 12px',
+                padding: '6px 10px',
                 cursor: 'pointer',
-                transition: 'all 0.1s ease',
+                minWidth: '44px',
+                minHeight: '36px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
               aria-label="Menu"
             >
-              {isMobileMenuOpen ? t('nav.close') : t('nav.menu')}
+              {isMobileMenuOpen ? 'X' : '='}
             </button>
           </div>
         </div>
@@ -156,7 +170,7 @@ export default function Navbar() {
           }}
           className="md:hidden animate-slide-down"
         >
-          <div className="px-4 py-4 space-y-2">
+          <div className="px-3 py-3 space-y-1.5">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -166,11 +180,10 @@ export default function Navbar() {
                   ...fonts.nav,
                   color: isActive(item.path) ? colors.primary : colors.textPrimary,
                   display: 'block',
-                  padding: '12px 16px',
+                  padding: '14px 16px',
                   backgroundColor: isActive(item.path) ? colors.primaryPastel : 'transparent',
                   border: `2px solid ${isActive(item.path) ? colors.primary : colors.gray200}`,
                   textDecoration: 'none',
-                  transition: 'all 0.1s ease',
                 }}
               >
                 &gt; {item.label}

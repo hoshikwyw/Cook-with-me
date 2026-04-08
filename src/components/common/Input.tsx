@@ -16,9 +16,10 @@ function useInputStyles() {
   const base: CSSProperties = {
     ...fonts.body,
     backgroundColor: colors.cardBg,
-    border: `3px solid ${colors.pixelBorder}`,
-    boxShadow: `3px 3px 0px ${colors.pixelBorder}`,
-    padding: '12px 16px',
+    border: `2px solid ${colors.pixelBorder}`,
+    boxShadow: `2px 2px 0px ${colors.pixelBorder}`,
+    padding: '10px 14px',
+    fontSize: '14px',
     width: '100%',
     outline: 'none',
     color: colors.textPrimary,
